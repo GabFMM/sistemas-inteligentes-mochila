@@ -1,0 +1,15 @@
+import utils
+
+# main.py
+NUM_TESTS = 30
+
+# Problem
+MAX_WEIGHT = 2000
+NUM_ITEMS = 1000
+ITEMS = utils.generate_items(NUM_ITEMS)
+
+# GA
+NUM_INDIVIDUALS = int(NUM_ITEMS / 5)
+MAX_GENERATIONS = 1000
+ITEM_CHOSEN_PERCENT = 0.5
+MUTATION_PERCENT = 0.005
