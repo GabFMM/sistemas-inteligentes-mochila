@@ -1,11 +1,11 @@
 import utils
 
 # main.py
-NUM_TESTS = 30
+NUM_TESTS = 3
 
 # Problem
 MAX_WEIGHT = 2000
-NUM_ITEMS = 1000
+NUM_ITEMS = 250
 ITEMS = utils.generate_items(NUM_ITEMS)
 
 # GA

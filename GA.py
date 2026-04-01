@@ -112,15 +112,13 @@ class GA:
         fitness, self.bestIndividual = self.calculateFitness()
         self.bestFitness = max(fitness)
 
-        cumFitness = itertools.accumulate(fitness)
-
         generations = 0
         while generations < self.maxGenerations and self.stagnationBestFitness < self.maxStagnationBestFitness:
             generations += 1
 
             newPopulation = []
             for _ in range(0, self.numIndividuals, 2):
-                pair = random.choices(self.population, cum_weights=cumFitness, k=2)
+                pair = random.choices(self.population, weights=fitness, k=2)
                 newIndividuals = self.reproduction(pair[0], pair[1])
                 newPopulation.extend(newIndividuals)
             newPopulation[0] = self.bestIndividual
