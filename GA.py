@@ -3,7 +3,6 @@ from constants import ITEM_CHOSEN_PERCENT, MUTATION_PERCENT
 from utils import fractional_knapsack_bound
 import random
 import time
-import math
 import itertools
 
 # GA is genetics algorithms 
@@ -15,7 +14,7 @@ class GA:
         self.maxGenerations = maxGenerations
         self.bestIndividual = Individual(len(problem.items))
         self.bestFitness = 0
-        self.maxStagnationBestFitness = int(1 / (MUTATION_PERCENT * math.log(numIndividuals, 10)))
+        self.maxStagnationBestFitness = int(maxGenerations * 0.2)
         self.stagnationBestFitness = 0
         self.mutationExtraPercent = 0
 
@@ -116,9 +115,10 @@ class GA:
         while generations < self.maxGenerations and self.stagnationBestFitness < self.maxStagnationBestFitness:
             generations += 1
 
+            cumWeights = list(itertools.accumulate(fitness))
             newPopulation = []
             for _ in range(0, self.numIndividuals, 2):
-                pair = random.choices(self.population, weights=fitness, k=2)
+                pair = random.choices(self.population, cum_weights=cumWeights, k=2)
                 newIndividuals = self.reproduction(pair[0], pair[1])
                 newPopulation.extend(newIndividuals)
             newPopulation[0] = self.bestIndividual
