@@ -21,7 +21,6 @@ def startGA():
     problem = Problem(MAX_WEIGHT, ITEMS)
 
     print("=== Genetic Algorithm ===")
-    print(MUTATION_PERCENT)
     ga = GA(problem, NUM_INDIVIDUALS, MAX_GENERATIONS)
     
     if(NUM_TESTS <= 0):
