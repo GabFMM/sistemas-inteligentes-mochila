@@ -4,7 +4,7 @@ from GA import GA
 from SA import SA
 from constants import (NUM_TESTS, MAX_WEIGHT, ITEMS, NUM_INDIVIDUALS,
                        MAX_GENERATIONS, INITIAL_TEMPERATURE, COOLING_FACTOR,
-                       MAX_CYCLES, NEIGHBORS_PER_CYCLE, USE_SWAP)
+                       MAX_CYCLES, NEIGHBORS_PER_CYCLE, USE_SWAP, MUTATION_PERCENT)
 
 def startSA():
     problem = Problem(MAX_WEIGHT, ITEMS)
@@ -21,6 +21,7 @@ def startGA():
     problem = Problem(MAX_WEIGHT, ITEMS)
 
     print("=== Genetic Algorithm ===")
+    print(MUTATION_PERCENT)
     ga = GA(problem, NUM_INDIVIDUALS, MAX_GENERATIONS)
     
     if(NUM_TESTS <= 0):
